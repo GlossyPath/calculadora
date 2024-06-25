@@ -1,4 +1,4 @@
-package application;
+package controlador;
 
 public class CalculadoraFXController {
 	

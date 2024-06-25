@@ -11,11 +11,15 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("CalculadoraFX.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/vista/CalculadoraFX.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/vista/css/application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			primaryStage.setTitle("CalculadoraFx");
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
