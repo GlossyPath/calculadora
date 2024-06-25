@@ -1,6 +1,6 @@
 # CalculadoraFX
 
-CalculadoraFX es una aplicación de calculadora desarrollada en JavaFX.
+CalculadoraFX es una aplicación de calculadora desarrollada en JavaFX y SceneBuilder.
 
 ## Descripción
 
