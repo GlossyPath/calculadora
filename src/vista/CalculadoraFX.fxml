@@ -4,25 +4,25 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CalculadoraFXController">
    <children>
       <TextField fx:id="tfContador" layoutX="38.0" layoutY="90.0" prefHeight="70.0" prefWidth="425.0" />
-      <Button layoutX="35.0" layoutY="658.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="0" />
-      <Button layoutX="145.0" layoutY="658.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="=" />
-      <Button layoutX="254.0" layoutY="658.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="CE" />
-      <Button layoutX="364.0" layoutY="658.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="-" />
-      <Button layoutX="36.0" layoutY="568.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="1" />
-      <Button layoutX="146.0" layoutY="568.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="2" />
-      <Button layoutX="255.0" layoutY="568.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="3" />
-      <Button layoutX="365.0" layoutY="568.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="+" />
-      <Button layoutX="36.0" layoutY="477.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="4" />
-      <Button layoutX="146.0" layoutY="477.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="5" />
-      <Button layoutX="255.0" layoutY="477.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="6" />
-      <Button layoutX="365.0" layoutY="477.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="*" />
-      <Button layoutX="36.0" layoutY="387.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="7" />
-      <Button layoutX="146.0" layoutY="387.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="8" />
-      <Button layoutX="255.0" layoutY="387.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="9" />
-      <Button layoutX="365.0" layoutY="387.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="/" />
+      <Button fx:id="btCero" layoutX="35.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBotonCero" prefHeight="80.0" prefWidth="100.0" text="0" />
+      <Button fx:id="btIgual" layoutX="145.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBotonIgual" prefHeight="80.0" prefWidth="100.0" text="=" />
+      <Button fx:id="btClear" layoutX="254.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBotonClear" prefHeight="80.0" prefWidth="100.0" text="CE" />
+      <Button fx:id="btResta" layoutX="364.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBotonResta" prefHeight="80.0" prefWidth="100.0" text="-" />
+      <Button fx:id="btUno" layoutX="36.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBotonUno" prefHeight="80.0" prefWidth="100.0" text="1" />
+      <Button fx:id="btDos" layoutX="146.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBotonDos" prefHeight="80.0" prefWidth="100.0" text="2" />
+      <Button fx:id="btTres" layoutX="255.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBotonTres" prefHeight="80.0" prefWidth="100.0" text="3" />
+      <Button fx:id="btSuma" layoutX="365.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBotonSuma" prefHeight="80.0" prefWidth="100.0" text="+" />
+      <Button fx:id="btCuatro" layoutX="36.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBotonCuatro" prefHeight="80.0" prefWidth="100.0" text="4" />
+      <Button fx:id="btCinco" layoutX="146.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBotonCinco" prefHeight="80.0" prefWidth="100.0" text="5" />
+      <Button fx:id="btSeis" layoutX="255.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBotonSeis" prefHeight="80.0" prefWidth="100.0" text="6" />
+      <Button fx:id="btMultiplicacion" layoutX="365.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBotonMultiplicacion" prefHeight="80.0" prefWidth="100.0" text="*" />
+      <Button fx:id="btSiete" layoutX="36.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBotonSiete" prefHeight="80.0" prefWidth="100.0" text="7" />
+      <Button fx:id="btOcho" layoutX="146.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBotonOcho" prefHeight="80.0" prefWidth="100.0" text="8" />
+      <Button fx:id="btnueve" layoutX="255.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBotonNueve" prefHeight="80.0" prefWidth="100.0" text="9" />
+      <Button fx:id="btDivision" layoutX="365.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBotonDivision" prefHeight="80.0" prefWidth="100.0" text="/" />
       <Button layoutX="36.0" layoutY="296.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Button" />
       <Button layoutX="146.0" layoutY="296.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Button" />
       <Button layoutX="255.0" layoutY="296.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="100.0" text="Button" />
