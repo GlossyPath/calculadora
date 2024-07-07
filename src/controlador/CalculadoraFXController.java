@@ -57,7 +57,7 @@ public class CalculadoraFXController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		this.contador = new Contador();	
-		this.acumulado = contador.getValor();
+		this.acumulado = 0;
 		this.operador = "";
 		this.numero = 0;
 		
@@ -76,9 +76,11 @@ public class CalculadoraFXController implements Initializable{
 			if(btnTexto.matches("\\d")){
 				
 				this.numero = Integer.parseInt(btnTexto);
-				this.acumulado = this.numero;
 				
-				tfContador.setText(Integer.toString(this.acumulado));
+				
+				tfContador.setText(Integer.toString(this.numero));
+				contador.setValor(this.numero);
+				this.acumulado = this.numero;
 				
 			}  else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) {
 				
@@ -87,32 +89,44 @@ public class CalculadoraFXController implements Initializable{
 			}
 		} else {
 			
-			int segundoNumero = Integer.parseInt(btnTexto);	
-			tfContador.setText(Integer.toString(segundoNumero));
-			
-			int resultado = 0;
-			
-			switch (this.operador) {
-            case "+":
-                resultado = this.acumulado + segundoNumero;
-                tfContador.setText(Integer.toString(resultado));
-                contador.setValor(resultado);
-                break;
-            case "-":
-                resultado = this.acumulado - segundoNumero;
-                tfContador.setText(Integer.toString(resultado));
-                break;
-            case "*":
-                resultado = this.acumulado * segundoNumero;
-                tfContador.setText(Integer.toString(resultado));
-                break;
-            case "/":
-                resultado = this.acumulado / segundoNumero;
-                tfContador.setText(Integer.toString(resultado));
-                break;
+			 if (btnTexto.matches("\\d")) {
+	                int segundoNumero = Integer.parseInt(btnTexto);
+	                switch (this.operador) {
+	                    case "+":
+	                        this.acumulado += segundoNumero;
+	                        break;
+	                    case "-":
+	                        this.acumulado -= segundoNumero;
+	                        break;
+	                    case "*":
+	                        this.acumulado *= segundoNumero;
+	                        break;
+	                    case "/":
+	                        this.acumulado /= segundoNumero;
+	                        break;
+	                }
+	                tfContador.setText(Integer.toString(this.acumulado));
+	                contador.setValor(this.acumulado);
+	                this.operador = "";
 			}
+			
 		}
 		
+		if(btnTexto.equals("CE")) {
+			
+			tfContador.clear();
+			
+			this.operador = "";
+		}
+		
+		if(btnTexto.equals("=")) {
+			
+			int resultado = contador.getValor();
+			
+			tfContador.setText(Integer.toString(resultado));
+			
+			this.operador = "";
+		}
 		
 		
 	}
