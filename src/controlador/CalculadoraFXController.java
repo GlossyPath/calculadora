@@ -50,87 +50,93 @@ public class CalculadoraFXController implements Initializable{
 	
 	private Contador contador;
 	private int numero;
-    private String operator;
+	private int acumulado;
+    private String operador;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		this.contador = new Contador();	
-		tfContador.setText(Integer.toString(contador.getValor()));
+		this.acumulado = contador.getValor();
+		this.operador = "";
+		this.numero = 0;
+		
 	}
 
 	// Event Listener on Button[#btCero].onAction
 	@FXML
-	public void clickBotonCero(ActionEvent event) {
-	}
-	// Event Listener on Button[#btIgual].onAction
-	@FXML
-	public void clickBotonIgual(ActionEvent event) {
-	}
-	// Event Listener on Button[#btClear].onAction
-	@FXML
-	public void clickBotonClear(ActionEvent event) {
-        tfContador.clear();
-        contador.setValor(0);
-	}
-	// Event Listener on Button[#btResta].onAction
-	@FXML
-	public void clickBotonResta(ActionEvent event) {
-	}
-	// Event Listener on Button[#btUno].onAction
-	@FXML
-	public void clickBotonUno(ActionEvent event) {
-        tfContador.appendText("1");
+	public void clickBoton(ActionEvent event) {
+		
+		Button btn = (Button) event.getSource();
+		
+		String btnTexto = btn.getText();
+		
+		if(operador.isEmpty()) {
+			
+			if(btnTexto.matches("\\d")){
+				
+				this.numero = Integer.parseInt(btnTexto);
+				this.acumulado = this.numero;
+				
+				tfContador.setText(Integer.toString(this.acumulado));
+				
+			}  else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) {
+				
+				operador = btnTexto;
+				tfContador.setText(btnTexto);
+			}
+		} else {
+			
+			int segundoNumero = Integer.parseInt(btnTexto);	
+			tfContador.setText(Integer.toString(segundoNumero));
+			
+			int resultado = 0;
+			
+			switch (this.operador) {
+            case "+":
+                resultado = this.acumulado + segundoNumero;
+                tfContador.setText(Integer.toString(resultado));
+                contador.setValor(resultado);
+                break;
+            case "-":
+                resultado = this.acumulado - segundoNumero;
+                tfContador.setText(Integer.toString(resultado));
+                break;
+            case "*":
+                resultado = this.acumulado * segundoNumero;
+                tfContador.setText(Integer.toString(resultado));
+                break;
+            case "/":
+                resultado = this.acumulado / segundoNumero;
+                tfContador.setText(Integer.toString(resultado));
+                break;
+			}
+		}
+		
+		
+		
 	}
 	
-	// Event Listener on Button[#btDos].onAction
-	@FXML
-	public void clickBotonDos(ActionEvent event) {
-	}
-	// Event Listener on Button[#btTres].onAction
-	@FXML
-	public void clickBotonTres(ActionEvent event) {
-	}
-	// Event Listener on Button[#btSuma].onAction
-	@FXML
-	public void clickBotonSuma(ActionEvent event) {
-		
-		numero = contador.getValor();
-		operator = "+";
-		tfContador.appendText(operator); //añade el operador o numero o lo que sea alo q esta en el tfContador
-		
-	}
-	// Event Listener on Button[#btCuatro].onAction
-	@FXML
-	public void clickBotonCuatro(ActionEvent event) {
-	}
-	// Event Listener on Button[#btCinco].onAction
-	@FXML
-	public void clickBotonCinco(ActionEvent event) {
-	}
-	// Event Listener on Button[#btSeis].onAction
-	@FXML
-	public void clickBotonSeis(ActionEvent event) {
-	}
-	// Event Listener on Button[#btMultiplicacion].onAction
-	@FXML
-	public void clickBotonMultiplicacion(ActionEvent event) {
-	}
-	// Event Listener on Button[#btSiete].onAction
-	@FXML
-	public void clickBotonSiete(ActionEvent event) {
-	}
-	// Event Listener on Button[#btOcho].onAction
-	@FXML
-	public void clickBotonOcho(ActionEvent event) {
-	}
-	// Event Listener on Button[#btnueve].onAction
-	@FXML
-	public void clickBotonNueve(ActionEvent event) {
-	}
-	// Event Listener on Button[#btDivision].onAction
-	@FXML
-	public void clickBotonDivision(ActionEvent event) {
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

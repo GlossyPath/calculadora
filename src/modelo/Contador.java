@@ -17,5 +17,11 @@ public class Contador {
 		this.valor = valor;
 	}
 	
+	public void sumarContador(int valor) {
+		
+		this.valor += valor;
+	}
+	
+	
 	
 }
