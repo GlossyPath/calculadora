@@ -90,23 +90,33 @@ public class CalculadoraFXController implements Initializable{
 		} else {
 			
 			 if (btnTexto.matches("\\d")) {
+				 
 	                int segundoNumero = Integer.parseInt(btnTexto);
+	                
 	                switch (this.operador) {
 	                    case "+":
-	                        this.acumulado += segundoNumero;
-	                        break;
+	                    	contador.sumarContador(segundoNumero);
+	                    	break;
+	                    	
 	                    case "-":
-	                        this.acumulado -= segundoNumero;
+	                        contador.restarContador(segundoNumero);
 	                        break;
+	                        
 	                    case "*":
-	                        this.acumulado *= segundoNumero;
+	                        contador.multiplicarContador(segundoNumero);
 	                        break;
+	                        
 	                    case "/":
-	                        this.acumulado /= segundoNumero;
+	                        try {
+	                        	contador.dividirContador(segundoNumero);
+	                        } catch(NumberFormatException e) {
+	                        	e.printStackTrace();
+	                        	tfContador.setText("Error al dividir por 0");
+	                        }
 	                        break;
 	                }
-	                tfContador.setText(Integer.toString(this.acumulado));
-	                contador.setValor(this.acumulado);
+	                tfContador.setText(Integer.toString(segundoNumero));
+	                contador.setValor(contador.getValor());
 	                this.operador = "";
 			}
 			

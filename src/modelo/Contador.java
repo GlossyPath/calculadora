@@ -17,11 +17,38 @@ public class Contador {
 		this.valor = valor;
 	}
 	
-	public void sumarContador(int valor) {
+	public void sumarContador(int segundoNumero) {
 		
-		this.valor += valor;
+		int total = this.getValor() + segundoNumero;
+		
+		this.setValor(total);		
 	}
 	
+	public void restarContador(int segundoNumero) {
+		
+		int total = this.getValor() - segundoNumero;
+		
+		this.setValor(total);
+	}
 	
+	public void multiplicarContador(int segundoNumero) {
+		
+		int total = this.getValor() * segundoNumero;
+		
+		this.setValor(total);
+	}
 	
+	public void dividirContador(int segundoNumero) throws NumberFormatException {
+		
+		if( segundoNumero == 0) {
+			throw new NumberFormatException ("No se puede dividir por 0");
+		} else {
+			
+			int total = this.getValor() / segundoNumero;
+			
+			this.setValor(total);
+		}
+		
+		
+	}
 }
