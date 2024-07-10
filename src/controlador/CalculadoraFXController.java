@@ -98,16 +98,18 @@ public class CalculadoraFXController implements Initializable{
 				tfContador.setText(btnTexto);
 				this.setAcumulado("");
 			}
+			
 		} else {
 			
-			 if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && !operador.isEmpty()) {
-				 
-				 
-	             int segundoNumero = Integer.parseInt(btnTexto);
-	             this.acumulado += btnTexto;
+			 if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/"))) {
+				 			 
+				this.numero = btnTexto;
+					
+				this.acumulado += this.numero;
+				tfContador.setText(this.acumulado);
 	             
-	             
-	         if(btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/"))       
+	          
+			 } else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/"))       
 	                
 	                switch (this.operador) {
 	                    case "+":
@@ -136,8 +138,6 @@ public class CalculadoraFXController implements Initializable{
 	                contador.setValor(contador.getValor());
 	                this.operador = "";
 			}
-			
-		}
 		
 		if(btnTexto.equals("CE")) {
 			
