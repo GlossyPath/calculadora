@@ -49,17 +49,17 @@ public class CalculadoraFXController implements Initializable{
 	private Button btDivision;
 	
 	private Contador contador;
-	private int numero;
-	private int acumulado;
+	private String numero;
     private String operador;
+    private String acumulado;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		this.contador = new Contador();	
-		this.acumulado = 0;
 		this.operador = "";
-		this.numero = 0;
+		this.numero = "";
+		this.acumulado = "";
 		
 	}
 
@@ -73,49 +73,66 @@ public class CalculadoraFXController implements Initializable{
 		
 		if(operador.isEmpty()) {
 			
-			if(btnTexto.matches("\\d")){
+			if((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && this.numero.isEmpty()){
 				
-				this.numero = Integer.parseInt(btnTexto);
+				this.numero = btnTexto;
 				
-				
-				tfContador.setText(Integer.toString(this.numero));
-				contador.setValor(this.numero);
+				tfContador.setText(this.numero);
+			
 				this.acumulado = this.numero;
+				
+				contador.setValor(Integer.parseInt(this.acumulado));
+				
+			} else if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && !this.acumulado.isEmpty()) {
+				
+				this.numero = btnTexto;
+				
+				this.acumulado += this.numero;
+				tfContador.setText(this.acumulado);
+				
+				contador.setValor(Integer.parseInt(this.acumulado));
 				
 			}  else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) {
 				
 				operador = btnTexto;
 				tfContador.setText(btnTexto);
+				this.setAcumulado("");
 			}
 		} else {
 			
-			 if (btnTexto.matches("\\d")) {
+			 if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && !operador.isEmpty()) {
 				 
-	                int segundoNumero = Integer.parseInt(btnTexto);
+				 
+	             int segundoNumero = Integer.parseInt(btnTexto);
+	             this.acumulado += btnTexto;
+	             
+	             
+	         if(btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/"))       
 	                
 	                switch (this.operador) {
 	                    case "+":
-	                    	contador.sumarContador(segundoNumero);
+	                    	contador.sumarContador(Integer.parseInt(this.acumulado));
 	                    	break;
 	                    	
 	                    case "-":
-	                        contador.restarContador(segundoNumero);
+	                        contador.restarContador(Integer.parseInt(this.acumulado));
 	                        break;
 	                        
 	                    case "*":
-	                        contador.multiplicarContador(segundoNumero);
+	                        contador.multiplicarContador(Integer.parseInt(this.acumulado));
 	                        break;
 	                        
 	                    case "/":
 	                        try {
-	                        	contador.dividirContador(segundoNumero);
+	                        	contador.dividirContador(Integer.parseInt(this.acumulado));
 	                        } catch(NumberFormatException e) {
-	                        	e.printStackTrace();
 	                        	tfContador.setText("Error al dividir por 0");
+	                        	e.printStackTrace();
+	                        	
 	                        }
 	                        break;
 	                }
-	                tfContador.setText(Integer.toString(segundoNumero));
+	         		tfContador.setText(Integer.toString(contador.getValor()));
 	                contador.setValor(contador.getValor());
 	                this.operador = "";
 			}
@@ -136,9 +153,40 @@ public class CalculadoraFXController implements Initializable{
 			tfContador.setText(Integer.toString(resultado));
 			
 			this.operador = "";
-		}
-		
-		
+		}	
+	}
+
+	
+	public String getAcumulado() {
+		return acumulado;
+	}
+
+	public void setAcumulado(String acumulado) {
+		this.acumulado = acumulado;
+	}
+
+	public Contador getContador() {
+		return contador;
+	}
+
+	public void setContador(Contador contador) {
+		this.contador = contador;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getOperador() {
+		return operador;
+	}
+
+	public void setOperador(String operador) {
+		this.operador = operador;
 	}
 	
 	
