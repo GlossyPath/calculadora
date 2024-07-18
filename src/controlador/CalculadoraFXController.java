@@ -59,6 +59,7 @@ public class CalculadoraFXController implements Initializable {
     
     @FXML
     public void clickBoton(ActionEvent event) {
+    	
         Button btn = (Button) event.getSource();
         String btnTexto = btn.getText();
         
@@ -68,7 +69,7 @@ public class CalculadoraFXController implements Initializable {
                 	
                 añadirPrimerDigito(btnTexto);
                     
-        	} else if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && !this.acumulado.isEmpty()) {
+        	} else if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/"))) {
                 	
                 añadirDigitos(btnTexto);
                     
@@ -90,21 +91,18 @@ public class CalculadoraFXController implements Initializable {
         				contador.sumarContador(Integer.parseInt(this.acumulado));
         				tfContador.setText(Integer.toString(contador.getValor()));
         				this.acumulado = "";
-        				this.operador = "";
                         break;
                             
                         case "-":
                         	contador.restarContador(Integer.parseInt(this.acumulado));
                             tfContador.setText(Integer.toString(contador.getValor()));
                             this.acumulado = "";
-                            this.operador = "";
                             break;
                             
                         case "*":
                             contador.multiplicarContador(Integer.parseInt(this.acumulado));
                             tfContador.setText(Integer.toString(contador.getValor()));
                             this.acumulado = "";
-                            this.operador = "";
                             break;
                             
                         case "/":
@@ -112,38 +110,37 @@ public class CalculadoraFXController implements Initializable {
                                 contador.dividirContador(Integer.parseInt(this.acumulado));
                                 tfContador.setText(Integer.toString(contador.getValor()));
                                 this.acumulado = "";
-                                this.operador = "";
                             } catch (NumberFormatException e) {
                                 tfContador.setText("Error al dividir por 0");
                                 e.printStackTrace();
                             }
-                            break;                          
+                            break;
+                           
+                        case "CE":
+                        	 tfContador.clear();
+                             
+                             contador.clearAndIgual();
+                             
+                             this.operador= "";
+                             this.acumulado = "";
+                             this.numero = "";
+                             break;
+                             
+                        case "=":
+                        	int resultado = contador.getValor();
+                            tfContador.setText(Integer.toString(resultado));
+                            
+                            contador.clearAndIgual();
+                            
+                            this.operador = "";
+                            this.acumulado = "";
+                            this.numero = "";
+                            break;
                             
                         default:
                 			System.out.println("Opcion incorrecta");
                     }  		                   
                 }
-            }
-        
-        if(btnTexto.equals("=")) {
-        	int resultado = contador.getValor();
-            tfContador.setText(Integer.toString(resultado));
-            
-            contador.clearAndIgual();
-            
-            this.operador = "";
-            this.acumulado = "";
-            this.numero = "";
-        }
-        if (btnTexto.equals("CE")) {
-        	
-            tfContador.clear();
-            
-            contador.clearAndIgual();
-            
-            this.operador= "";
-            this.acumulado = "";
-            this.numero = "";
-        }
+        } 
     }
 }
