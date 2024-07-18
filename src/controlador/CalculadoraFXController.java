@@ -26,6 +26,7 @@ public class CalculadoraFXController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+    	
         this.contador = new Contador();
         this.operador = "";
         this.numero = "";
@@ -34,6 +35,7 @@ public class CalculadoraFXController implements Initializable {
 
     
     public void añadirSigno (String btnTexto) {
+    	
     	operador = btnTexto;
         tfContador.setText(operador);
         
@@ -43,51 +45,55 @@ public class CalculadoraFXController implements Initializable {
         }            
     }
     
-    public void añadirPrimerDigito(String btnTexto) {
-    	this.numero = btnTexto;
-        tfContador.setText(this.numero);
-        this.acumulado = this.numero;       
-        contador.setValor(Integer.parseInt(this.acumulado));
-    }
     
     public void añadirDigitos(String btnTexto) {
+    	
     	 if (this.acumulado.equals("")) {
-             tfContador.setText(btnTexto);
+    		 this.numero = btnTexto;
+             tfContador.setText(this.numero);
+             this.acumulado = this.numero;       
+             
+    	 } else {
+    		 this.numero = btnTexto;
+             this.acumulado += this.numero;
+             tfContador.setText(this.acumulado);
     	 }
-    	 
-    	 this.numero = btnTexto;
-         this.acumulado += this.numero;
-         tfContador.setText(this.acumulado);
     }
+    
     
     @FXML
     public void clickBoton(ActionEvent event) {
-    	
-    	
     	
         Button btn = (Button) event.getSource();
         String btnTexto = btn.getText();
         
         if (btnTexto.equals("CE")) {
             tfContador.clear();
-            contador.clearAndIgual();
+            contador.clear();
             this.operador = "";
             this.acumulado = "";
             this.numero = "";
-            return; // Salir del método después de manejar "CE"
+            return;
         }
         
-        if (operador.equals("") && !btnTexto.equals("CE") && !btnTexto.equals("=")) {
+        if(btnTexto.equals("=")) {
+        	contador.resultado(Integer.parseInt(this.acumulado));
+            
+            this.operador = "";
+            this.acumulado = "";
+            this.numero = "";
+            return;
+        }
+        
+        
+        
+        if (operador.equals("")) {
             	
-        	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && this.numero.isEmpty()) {
+        	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/"))) {
                 	
-                añadirPrimerDigito(btnTexto);
+        		añadirDigitos(btnTexto);
                     
-        	} else if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/"))) {
-                	
-                añadirDigitos(btnTexto);
-                    
-        	} else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/") && btnTexto.isEmpty()) {
+        	} else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) {
                 	
                 añadirSigno(btnTexto);
         	}
@@ -129,18 +135,7 @@ public class CalculadoraFXController implements Initializable {
                                 e.printStackTrace();
                             }
                             break;
-                            
-                        case "=":
-                        	int resultado = contador.getValor();
-                            tfContador.setText(Integer.toString(resultado));
-                            
-                            contador.clearAndIgual();
-                            
-                            this.operador = "";
-                            
-                            this.numero = "";
-                            break;
-                            
+                                        
                         default:
                 			System.out.println("Opcion incorrecta");
                     }  		                   

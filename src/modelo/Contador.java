@@ -49,7 +49,15 @@ public class Contador {
 	}
 
 	
-	public void clearAndIgual(){
+	public void resultado(int acumulado) {
+		
+		int resultado = this.getValor() + acumulado;
+		
+		this.setValor(resultado);
+	}
+	
+	
+	public void clear(){
 		this.setValor(0);
 	}
 }
