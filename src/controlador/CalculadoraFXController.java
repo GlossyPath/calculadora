@@ -35,9 +35,12 @@ public class CalculadoraFXController implements Initializable {
     
     public void añadirSigno (String btnTexto) {
     	operador = btnTexto;
-        tfContador.setText(btnTexto);
-        contador.setValor(Integer.parseInt(this.acumulado));
-        this.acumulado = "";     
+        tfContador.setText(operador);
+        
+        if(!this.acumulado.isEmpty()) {
+        	contador.setValor(Integer.parseInt(this.acumulado));
+            this.acumulado = "";
+        }            
     }
     
     public void añadirPrimerDigito(String btnTexto) {
@@ -60,10 +63,21 @@ public class CalculadoraFXController implements Initializable {
     @FXML
     public void clickBoton(ActionEvent event) {
     	
+    	
+    	
         Button btn = (Button) event.getSource();
         String btnTexto = btn.getText();
         
-        if (operador.equals("")) {
+        if (btnTexto.equals("CE")) {
+            tfContador.clear();
+            contador.clearAndIgual();
+            this.operador = "";
+            this.acumulado = "";
+            this.numero = "";
+            return; // Salir del método después de manejar "CE"
+        }
+        
+        if (operador.equals("") && !btnTexto.equals("CE") && !btnTexto.equals("=")) {
             	
         	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/")) && this.numero.isEmpty()) {
                 	
@@ -115,17 +129,7 @@ public class CalculadoraFXController implements Initializable {
                                 e.printStackTrace();
                             }
                             break;
-                           
-                        case "CE":
-                        	 tfContador.clear();
-                             
-                             contador.clearAndIgual();
-                             
-                             this.operador= "";
-                             this.acumulado = "";
-                             this.numero = "";
-                             break;
-                             
+                            
                         case "=":
                         	int resultado = contador.getValor();
                             tfContador.setText(Integer.toString(resultado));
@@ -133,7 +137,7 @@ public class CalculadoraFXController implements Initializable {
                             contador.clearAndIgual();
                             
                             this.operador = "";
-                            this.acumulado = "";
+                            
                             this.numero = "";
                             break;
                             
