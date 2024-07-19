@@ -49,11 +49,13 @@ public class Contador {
 	}
 
 	
-	public void resultadoContador(int segundaCifra) {
+	public int resultadoContador() {
 		
-		int resultado = this.getValor() + segundaCifra;
+		int resultado = this.getValor();
 		
 		this.setValor(resultado);
+		
+		return resultado;
 	}
 	
 	

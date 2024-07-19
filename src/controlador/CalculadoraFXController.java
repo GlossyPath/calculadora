@@ -68,34 +68,20 @@ public class CalculadoraFXController implements Initializable {
         String btnTexto = btn.getText();
         
         
-        
-        if(btnTexto.equals("=")) {
-        	contador.resultadoContador(Integer.parseInt(this.acumulado));
-            
-            this.operador = "";
-            this.acumulado = "";
-            this.numero = "";
-            return;
-        }
-        
-        
-        
-       
-            	
-        	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE"))) {
+        if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE"))) {
                 	
-        		añadirDigitos(btnTexto);
+        	añadirDigitos(btnTexto);
                     
-        	} else {
+        } else {
         		
-        		 añadirSigno(btnTexto);
+        	añadirSigno(btnTexto);
         		
-        		switch (this.operador) {
-        			case "+":
-        				contador.sumarContador(Integer.parseInt(this.acumulado));
-        				tfContador.setText(Integer.toString(contador.getValor()));
-        				this.acumulado = "";
-                        break;
+        	switch (this.operador) {
+        		case "+":
+        			contador.sumarContador(Integer.parseInt(this.acumulado));
+        			tfContador.setText(Integer.toString(contador.getValor()));
+        			this.acumulado = "";
+                    break;
                             
         			case "-":
                         contador.restarContador(Integer.parseInt(this.acumulado));
@@ -127,6 +113,15 @@ public class CalculadoraFXController implements Initializable {
         	            this.acumulado = "";
         	            this.numero = "";
         	            break;
+        	            
+        			case "=":
+        				int resultado = contador.resultadoContador();
+        				tfContador.setText(Integer.toString(resultado));
+        	            
+        	            this.operador = "";
+        	            this.acumulado = "";
+        	            this.numero = "";
+        	            return;
                                         
         			default:
         				System.out.println("Opcion incorrecta");
