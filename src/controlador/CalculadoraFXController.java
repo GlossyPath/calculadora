@@ -41,7 +41,7 @@ public class CalculadoraFXController implements Initializable {
         
         if(contador.getValor() == 0) {
         	contador.setValor(Integer.parseInt(this.acumulado));
-        	this.acumulado = "";
+        	this.acumulado = "0";
         }
     }
     
@@ -67,14 +67,7 @@ public class CalculadoraFXController implements Initializable {
         Button btn = (Button) event.getSource();
         String btnTexto = btn.getText();
         
-        if (btnTexto.equals("CE")) {
-            tfContador.clear();
-            contador.clear();
-            this.operador = "";
-            this.acumulado = "";
-            this.numero = "";
-            return;
-        }
+        
         
         if(btnTexto.equals("=")) {
         	contador.resultadoContador(Integer.parseInt(this.acumulado));
@@ -87,27 +80,17 @@ public class CalculadoraFXController implements Initializable {
         
         
         
-        if (operador.equals("")) {
-            	
-        	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/"))) {
-                	
-        		añadirDigitos(btnTexto);
-                    
-        	} else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) {
-                	
-                añadirSigno(btnTexto);
-        	}
-                
-        } else {
+       
             	
         	if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE"))) {
                 	
-                añadirDigitos(btnTexto);
+        		añadirDigitos(btnTexto);
                     
         	} else {
-                	
         		
-        		switch (btnTexto) {
+        		 añadirSigno(btnTexto);
+        		
+        		switch (this.operador) {
         			case "+":
         				contador.sumarContador(Integer.parseInt(this.acumulado));
         				tfContador.setText(Integer.toString(contador.getValor()));
@@ -136,11 +119,18 @@ public class CalculadoraFXController implements Initializable {
         					e.printStackTrace();
         				}
         				break;
+        				
+        			case "CE":
+        				tfContador.clear();
+        	            contador.clear();
+        	            this.operador = "";
+        	            this.acumulado = "";
+        	            this.numero = "";
+        	            break;
                                         
         			default:
         				System.out.println("Opcion incorrecta");
         		}  		                   
         	}
         } 
-    }
 }
