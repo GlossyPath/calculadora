@@ -20,38 +20,38 @@ public class Contador {
 	}
 	
 	
-	public void sumarContador(int segundoNumero) {		
-		int total = this.getValor() + segundoNumero;
+	public void sumarContador(int segundaCifra) {		
+		int total = this.getValor() + segundaCifra;
 		this.setValor(total);		
 	}
 	
 	
-	public void restarContador(int segundoNumero) {
-		int total = this.getValor() - segundoNumero;		
+	public void restarContador(int segundaCifra) {
+		int total = this.getValor() - segundaCifra;		
 		this.setValor(total);
 	}
 	
 	
-	public void multiplicarContador(int segundoNumero) {
-		int total = this.getValor() * segundoNumero;
+	public void multiplicarContador(int segundaCifra) {
+		int total = this.getValor() * segundaCifra;
 		this.setValor(total);
 	}
 	
 	
-	public void dividirContador(int segundoNumero) throws NumberFormatException {
-		if( segundoNumero == 0) {
+	public void dividirContador(int segundaCifra) throws NumberFormatException {
+		if( segundaCifra == 0) {
 			throw new NumberFormatException ("No se puede dividir por 0");
 			
 		} else {
-			int total = this.getValor() / segundoNumero;
+			int total = this.getValor() / segundaCifra;
 			this.setValor(total);
 		}		
 	}
 
 	
-	public void resultado(int acumulado) {
+	public void resultadoContador(int segundaCifra) {
 		
-		int resultado = this.getValor() + acumulado;
+		int resultado = this.getValor() + segundaCifra;
 		
 		this.setValor(resultado);
 	}
