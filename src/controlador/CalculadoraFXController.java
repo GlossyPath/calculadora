@@ -73,7 +73,8 @@ public class CalculadoraFXController implements Initializable {
         	añadirDigitos(btnTexto);
                     
         } else {
-        		
+        	
+        	tfContador.setText(btnTexto);	
         	añadirSigno(btnTexto);
         		
         	switch (this.operador) {
