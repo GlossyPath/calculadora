@@ -51,7 +51,6 @@ public class CalculadoraFXController implements Initializable {
              tfAcumulado.appendText(btnTexto);
     	 }
     	 
-    	 contador.setValor(Integer.parseInt(this.acumulado));
     }
     
     
@@ -73,8 +72,13 @@ public class CalculadoraFXController implements Initializable {
         	
         		case "+":
         			tfAcumulado.appendText(btnTexto);
+        			
+        			if(contador.getValor() != 0) {
+            			tfContador.setText(Integer.toString(contador.getValor()));
+        			}
+        			
         			contador.sumarContador(Integer.parseInt(this.acumulado));
-        			tfContador.setText(Integer.toString(contador.getValor()));
+
         			this.acumulado = "";
                     break;
                             
