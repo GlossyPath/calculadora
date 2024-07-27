@@ -20,13 +20,15 @@ public class Contador {
 	}
 	
 	
-	public void sumarContador(int segundaCifra) {		
+	public void sumarContador(int segundaCifra) {	
+		
 		int total = this.getValor() + segundaCifra;
 		this.setValor(total);		
 	}
 	
 	
 	public void restarContador(int segundaCifra) {
+		
 		int total = this.getValor() - segundaCifra;		
 		this.setValor(total);
 	}
