@@ -18,7 +18,7 @@ public class Contador {
 	public void setValor(int valor) {
 		this.valor = valor;
 	}
-	
+
 	
 	public void sumarContador(int segundaCifra) {	
 		

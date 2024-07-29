@@ -39,14 +39,18 @@ public class CalculadoraFXController implements Initializable {
             tfContador.clear();
             reset = false;
         }
+        
         this.numero += btnTexto;
         tfContador.setText(this.numero);
+        
+        tfAcumulado.appendText(btnTexto);
     }
     
     public void guardarOperador(String btnTexto) {
         if (!this.numero.isEmpty()) {
             realizarOperacion();
         }
+        
         this.operador = btnTexto;
         tfAcumulado.appendText(this.operador);
         reset = true;
@@ -54,24 +58,30 @@ public class CalculadoraFXController implements Initializable {
     
     public void realizarOperacion() {
         int valorActual = Integer.parseInt(this.numero);
+        
         switch (this.operador) {
             case "+":
                 contador.sumarContador(valorActual);
                 break;
+                
             case "-":
                 contador.restarContador(valorActual);
                 break;
+                
             case "*":
                 contador.multiplicarContador(valorActual);
                 break;
+                
             case "/":
                 try {
                     contador.dividirContador(valorActual);
+                    
                 } catch (NumberFormatException e) {
                     tfContador.setText("Error al dividir por 0");
                     e.printStackTrace();
                 }
                 break;
+                
             default:
                 contador.setValor(valorActual);
         }
@@ -86,11 +96,14 @@ public class CalculadoraFXController implements Initializable {
         
         if (btnTexto.matches("[0-9]")) {
             añadirDigitos(btnTexto);
+            
         } else if (btnTexto.matches("[+\\-*/]")) {
             guardarOperador(btnTexto);
+            
         } else if (btnTexto.equals("=")) {
             realizarOperacion();
             this.operador = "";
+            
         } else if (btnTexto.equals("CE")) {
             tfContador.clear();
             tfAcumulado.clear();
