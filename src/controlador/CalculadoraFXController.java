@@ -40,8 +40,9 @@ public class CalculadoraFXController implements Initializable {
     	
     	this.numero = btnTexto;
         this.acumulado += this.numero;
+        tfAcumulado.appendText(this.numero);
         tfContador.setText(this.acumulado);
-        tfAcumulado.appendText(btnTexto);   		
+           		
     }
     
     
@@ -56,6 +57,68 @@ public class CalculadoraFXController implements Initializable {
     	
     	tfAcumulado.appendText(this.operador);
     }
+    
+    
+    public void realizarOperacion() {
+    	
+    	switch (this.operador) {
+    	
+		case "+":	    			
+			tfContador.setText(Integer.toString(contador.getValor()));
+			
+			contador.sumarContador(Integer.parseInt(this.acumulado));
+
+			this.acumulado = "";
+			this.operador = "";
+            break;
+                    
+		case "-":
+			
+			contador.restarContador(Integer.parseInt(this.acumulado));
+			tfContador.setText(Integer.toString(contador.getValor()));
+			this.acumulado = "";
+			break;
+                    
+			case "*":
+				contador.multiplicarContador(Integer.parseInt(this.acumulado));
+				tfContador.setText(Integer.toString(contador.getValor()));
+				this.acumulado = "";
+                break;
+                    
+			case "/":
+				try {
+					contador.dividirContador(Integer.parseInt(this.acumulado));
+                    tfContador.setText(Integer.toString(contador.getValor()));
+                    this.acumulado = "";
+				} catch (NumberFormatException e) {
+					tfContador.setText("Error al dividir por 0");
+					e.printStackTrace();
+				}
+				break;
+				
+			case "CE":
+				tfContador.clear();
+				tfAcumulado.clear();
+	            contador.clear();
+	            this.operador = "";
+	            this.acumulado = "";
+	            this.numero = "";
+	            break;
+	            
+			case "=":
+				int resultado = contador.resultadoContador();
+				tfContador.setText(Integer.toString(resultado));
+	            
+	            this.operador = "";
+	            this.acumulado = "";
+	            this.numero = "";
+	            return;
+                                
+			default:
+				System.out.println("Opcion incorrecta");
+		}  		                   
+	}
+    
     
     
     @FXML
@@ -75,68 +138,13 @@ public class CalculadoraFXController implements Initializable {
                     
         } else { 
         	
-        	añadirDigitos(btnTexto);
-        }
-        	        	        		            	            	        	
-        	if(contador.getValor() != 0 && !this.operador.equals("") && !this.acumulado.equals("")) {
+        	do {
         		
-        		switch (this.operador) {
+            	añadirDigitos(btnTexto);
             	
-        		case "+":	    			
-        			tfContador.setText(Integer.toString(contador.getValor()));
-        			
-        			contador.sumarContador(Integer.parseInt(this.acumulado));
-
-        			this.acumulado = "";
-        			this.operador = "";
-                    break;
-                            
-        		case "-":
-        			tfAcumulado.appendText(btnTexto);
-        			contador.restarContador(Integer.parseInt(this.acumulado));
-        			tfContador.setText(Integer.toString(contador.getValor()));
-        			this.acumulado = "";
-        			break;
-                            
-        			case "*":
-        				contador.multiplicarContador(Integer.parseInt(this.acumulado));
-        				tfContador.setText(Integer.toString(contador.getValor()));
-        				this.acumulado = "";
-                        break;
-                            
-        			case "/":
-        				try {
-        					contador.dividirContador(Integer.parseInt(this.acumulado));
-                            tfContador.setText(Integer.toString(contador.getValor()));
-                            this.acumulado = "";
-        				} catch (NumberFormatException e) {
-        					tfContador.setText("Error al dividir por 0");
-        					e.printStackTrace();
-        				}
-        				break;
-        				
-        			case "CE":
-        				tfContador.clear();
-        				tfAcumulado.clear();
-        	            contador.clear();
-        	            this.operador = "";
-        	            this.acumulado = "";
-        	            this.numero = "";
-        	            break;
-        	            
-        			case "=":
-        				int resultado = contador.resultadoContador();
-        				tfContador.setText(Integer.toString(resultado));
-        	            
-        	            this.operador = "";
-        	            this.acumulado = "";
-        	            this.numero = "";
-        	            return;
-                                        
-        			default:
-        				System.out.println("Opcion incorrecta");
-        		}  		                   
-        	}
-        		
+        	} while((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE")));
+        	
+        	realizarOperacion();
+        }		      		
     }     	       	
 } 
