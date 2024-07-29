@@ -36,21 +36,25 @@ public class CalculadoraFXController implements Initializable {
     }
     
    
-    public void añadirDigitos(String btnTexto) {
+    public void añadirDigitos(String btnTexto) {  //método correcto, pero más adelante mejoraremos la lógica del mismo  
     	
-    	 if (this.acumulado.equals("")) {
-    		 this.numero = btnTexto;
-             tfContador.setText(this.numero);
-             tfAcumulado.appendText(this.numero);
-             this.acumulado = this.numero;       
-             
-    	 } else {
-    		 this.numero = btnTexto;
-             this.acumulado += this.numero;
-             tfContador.setText(this.acumulado);
-             tfAcumulado.appendText(btnTexto);
-    	 }
-    	 
+    	this.numero = btnTexto;
+        this.acumulado += this.numero;
+        tfContador.setText(this.acumulado);
+        tfAcumulado.appendText(btnTexto);   		
+    }
+    
+    
+    public void guardarSigno (String btnTexto) {
+    	
+    	if(contador.getValor() == 0) {
+        	contador.setValor(Integer.parseInt(this.acumulado));
+        	this.acumulado = "";
+    	}
+    	
+    	this.operador = btnTexto;
+    	
+    	tfAcumulado.appendText(this.operador);
     }
     
     
@@ -61,31 +65,31 @@ public class CalculadoraFXController implements Initializable {
         String btnTexto = btn.getText();
         
         
-        if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE"))) {
+        if ((!btnTexto.equals("+") && !btnTexto.equals("-") && !btnTexto.equals("*") && !btnTexto.equals("/") && !btnTexto.equals("=") && !btnTexto.equals("CE")) && contador.getValor() == 0) { // CORRECTO
                 	
         	añadirDigitos(btnTexto);
         	
+        } else if ((btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/")) && this.operador.equals("")) {
+        
+        	guardarSigno (btnTexto);
                     
-        } else {
+        } else if ((contador.getValor() != 0 && !this.operador.equals("")) || this.acumulado.equals("")) {
         	
-        	if(contador.getValor() == 0) {
-            	contador.setValor(Integer.parseInt(this.acumulado));
-            	this.acumulado = "0";
-        	}
-        	
-        	        	
-        	switch (btnTexto) {
-        	
-        		case "+":
-        			tfAcumulado.appendText(btnTexto);
-        			        			
+        	if(this.acumulado.equals("")) {
+        		
+            	añadirDigitos(btnTexto);
+            	
+        	} else {
+        		
+        		switch (this.operador) {
+            	
+        		case "+":	    			
+        			tfContador.setText(Integer.toString(contador.getValor()));
         			
         			contador.sumarContador(Integer.parseInt(this.acumulado));
-        			
-            		tfContador.setText(Integer.toString(contador.getValor()));
-
 
         			this.acumulado = "";
+        			this.operador = "";
                     break;
                             
         		case "-":
@@ -133,6 +137,11 @@ public class CalculadoraFXController implements Initializable {
         			default:
         				System.out.println("Opcion incorrecta");
         		}  		                   
+        	}     	       	
         	}
+        	
+        	
+        	        	
+        	
         } 
 }
