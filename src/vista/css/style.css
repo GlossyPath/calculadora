@@ -1,0 +1,21 @@
+
+
+.fondo{
+	-fx-background-color: #C9DABF;
+} 
+
+.boton{
+	-fx-background-color: #9CA986;
+	-fx-font-weight: bold;
+}
+
+.botonOperacion{
+	-fx-background-color: #5F6F65;
+	-fx-font-weight: bold;
+}
+
+.txField {
+	-fx-background-color: #808D7C;
+	-fx-font-weight: bold;	
+}
+
