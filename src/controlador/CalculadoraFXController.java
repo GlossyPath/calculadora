@@ -118,4 +118,13 @@ public class CalculadoraFXController implements Initializable {
     public void clickMenuCerrar(ActionEvent event) {
     	Platform.exit();
     }
+    
+    @FXML
+    public void clickBotonBorrar(ActionEvent event) {
+    	tfContador.clear();
+        tfAcumulado.clear();
+        contador.clear();
+        this.operador = "";
+        this.numero = "";
+    }
 }
