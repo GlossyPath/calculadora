@@ -1,32 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="500.0" styleClass="fondo" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.CalculadoraFXController">
    <children>
-      <TextField fx:id="tfContador" alignment="BOTTOM_RIGHT" layoutX="38.0" layoutY="206.0" prefHeight="45.0" prefWidth="425.0" />
-      <Button fx:id="btCero" layoutX="35.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="0" />
-      <Button fx:id="btIgual" layoutX="145.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="=" />
-      <Button fx:id="btClear" layoutX="254.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="CE" />
-      <Button fx:id="btResta" layoutX="364.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="-" />
-      <Button fx:id="btUno" layoutX="36.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="1" />
-      <Button fx:id="btDos" layoutX="146.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="2" />
-      <Button fx:id="btTres" layoutX="255.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="3" />
-      <Button fx:id="btSuma" layoutX="365.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="+" />
-      <Button fx:id="btCuatro" layoutX="36.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="4" />
-      <Button fx:id="btCinco" layoutX="146.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="5" />
-      <Button fx:id="btSeis" layoutX="255.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="6" />
-      <Button fx:id="btMultiplicacion" layoutX="365.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="*" />
-      <Button fx:id="btSiete" layoutX="36.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="7" />
-      <Button fx:id="btOcho" layoutX="146.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="8" />
-      <Button fx:id="btnueve" layoutX="255.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="9" />
-      <Button fx:id="btDivision" layoutX="365.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="/" />
-      <Button layoutX="36.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="Button" />
-      <Button layoutX="146.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="Button" />
-      <Button layoutX="255.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="Button" />
-      <Button layoutX="365.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" text="Button" />
-      <TextField fx:id="tfAcumulado" alignment="BOTTOM_RIGHT" layoutX="38.0" layoutY="118.0" prefHeight="45.0" prefWidth="425.0" />
+      <TextField fx:id="tfContador" alignment="BOTTOM_RIGHT" layoutX="35.0" layoutY="222.0" prefHeight="45.0" prefWidth="430.0" styleClass="txField" stylesheets="@css/style.css" />
+      <Button fx:id="btCero" layoutX="35.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="0" />
+      <Button fx:id="btIgual" layoutX="145.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="=" />
+      <Button fx:id="btClear" layoutX="254.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="CE" />
+      <Button fx:id="btResta" layoutX="365.0" layoutY="658.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="-" />
+      <Button fx:id="btUno" layoutX="36.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="1" />
+      <Button fx:id="btDos" layoutX="146.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="2" />
+      <Button fx:id="btTres" layoutX="255.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="3" />
+      <Button fx:id="btSuma" layoutX="365.0" layoutY="568.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="+" />
+      <Button fx:id="btCuatro" layoutX="36.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="4" />
+      <Button fx:id="btCinco" layoutX="146.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="5" />
+      <Button fx:id="btSeis" layoutX="255.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="6" />
+      <Button fx:id="btMultiplicacion" layoutX="365.0" layoutY="477.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="*" />
+      <Button fx:id="btSiete" layoutX="36.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="7" />
+      <Button fx:id="btOcho" layoutX="146.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="8" />
+      <Button fx:id="btnueve" layoutX="255.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="9" />
+      <Button fx:id="btDivision" layoutX="365.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="/" />
+      <Button layoutX="36.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
+      <Button layoutX="146.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
+      <Button layoutX="255.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
+      <Button layoutX="365.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
+      <TextField fx:id="tfAcumulado" alignment="BOTTOM_RIGHT" layoutX="35.0" layoutY="152.0" prefHeight="45.0" prefWidth="430.0" styleClass="txField" stylesheets="@css/style.css" />
+      <MenuBar prefHeight="25.0" prefWidth="500.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
