@@ -9,6 +9,7 @@ import modelo.Contador;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
 public class CalculadoraFXController implements Initializable {
@@ -111,5 +112,10 @@ public class CalculadoraFXController implements Initializable {
             this.operador = "";
             this.numero = "";
         }
+    }
+    
+    @FXML
+    public void clickMenuCerrar(ActionEvent event) {
+    	Platform.exit();
     }
 }
