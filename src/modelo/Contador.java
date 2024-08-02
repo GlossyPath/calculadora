@@ -49,6 +49,11 @@ public class Contador {
 			this.setValor(total);
 		}		
 	}
+	
+	public void raizCuadradaContador() {
+		int total = (int) Math.sqrt(this.getValor());
+		this.setValor(total);		
+	}
 
 	
 	public int resultadoContador() {

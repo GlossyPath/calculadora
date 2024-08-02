@@ -19,7 +19,7 @@ public class CalculadoraFXController implements Initializable {
     private TextField tfAcumulado;
     @FXML
     private Button btCero, btIgual, btClear, btResta, btUno, btDos, btTres, btSuma, btCuatro, btCinco, btSeis,
-            btMultiplicacion, btSiete, btOcho, btnueve, btDivision;
+            btMultiplicacion, btSiete, btOcho, btnueve, btDivision, btRaizCuadrada;
 
     private Contador contador;
     
@@ -72,6 +72,10 @@ public class CalculadoraFXController implements Initializable {
             case "*":
                 contador.multiplicarContador(valorActual);
                 break;
+             
+            case "√":
+            	contador.raizCuadradaContador();
+            	break;
                 
             case "/":
                 try {
@@ -98,7 +102,7 @@ public class CalculadoraFXController implements Initializable {
         if (btnTexto.matches("[0-9]")) {
             añadirDigitos(btnTexto);
             
-        } else if (btnTexto.matches("[+\\-*/]")) {
+        } else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/") || btnTexto.equals("√")) {
             guardarOperador(btnTexto);
             
         } else if (btnTexto.equals("=")) {
