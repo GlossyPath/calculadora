@@ -50,11 +50,10 @@ public class Contador {
 		}		
 	}
 	
-	public void raizCuadradaContador() {
-		int total = (int) Math.sqrt(this.getValor());
+	public void raizCuadradaContador(int valorActual) {
+		int total = (int) Math.sqrt(valorActual);
 		this.setValor(total);		
 	}
-
 	
 	public int resultadoContador() {
 		

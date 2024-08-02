@@ -36,64 +36,87 @@ public class CalculadoraFXController implements Initializable {
     }
     
     public void añadirDigitos(String btnTexto) {
-        if (reset) {
-            tfContador.clear();
-            reset = false;
-        }
-        
-        this.numero += btnTexto;
-        tfContador.setText(this.numero);
-        
-        tfAcumulado.appendText(btnTexto);
-    }
+    	 if (reset) {
+    	        tfContador.clear();
+    	        reset = false;
+    	    }
+    	    
+    	    this.numero += btnTexto;
+    	    tfContador.setText(this.numero);
+    	    tfAcumulado.appendText(btnTexto);
+    	}
     
     public void guardarOperador(String btnTexto) {
-        if (!this.numero.isEmpty()) {
-            realizarOperacion();
-        }
-        
-        this.operador = btnTexto;
-        tfAcumulado.appendText(this.operador);
-        reset = true;
-    }
+    	 if (!this.numero.isEmpty()) {
+             realizarOperacion();  
+         }
+         
+    	 if (btnTexto.equals("√")) {
+    	        this.operador = btnTexto;
+    	        tfAcumulado.appendText(this.operador);
+    	        reset = true;
+    	        
+    	    } else {
+    	        this.operador = btnTexto;
+    	        tfAcumulado.appendText(this.operador);
+    	        reset = true;
+    	    }
+     }
     
     public void realizarOperacion() {
-        int valorActual = Integer.parseInt(this.numero);
+        if (this.numero.isEmpty()) {
+            return;
+        }
+        
+        int valorActual;
+        try {
+            valorActual = Integer.parseInt(this.numero);
+        } catch (NumberFormatException e) {
+            tfContador.setText("Error");
+            this.numero = "";
+            return;
+        }
         
         switch (this.operador) {
             case "+":
                 contador.sumarContador(valorActual);
                 break;
-                
+
             case "-":
                 contador.restarContador(valorActual);
                 break;
-                
+
             case "*":
                 contador.multiplicarContador(valorActual);
                 break;
-             
+
             case "√":
-            	contador.raizCuadradaContador();
-            	break;
-                
+                if (valorActual < 0) {
+                    tfContador.setText("Error: Raíz de número negativo");
+                    this.numero = "";
+                    return;
+                }
+                contador.setValor((int) Math.sqrt(valorActual));
+                break;
+
             case "/":
                 try {
                     contador.dividirContador(valorActual);
-                    
-                } catch (NumberFormatException e) {
+                } catch (ArithmeticException e) {
                     tfContador.setText("Error al dividir por 0");
                     e.printStackTrace();
+                    this.numero = "";
+                    return;
                 }
                 break;
-                
+
             default:
                 contador.setValor(valorActual);
         }
+        
         tfContador.setText(Integer.toString(contador.getValor()));
         this.numero = "";
     }
-    
     @FXML
     public void clickBoton(ActionEvent event) {
         Button btn = (Button) event.getSource();
