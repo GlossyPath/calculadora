@@ -69,8 +69,10 @@ public class CalculadoraFXController implements Initializable {
         }
         
         int valorActual;
+        
         try {
             valorActual = Integer.parseInt(this.numero);
+            
         } catch (NumberFormatException e) {
             tfContador.setText("Error");
             this.numero = "";
@@ -78,6 +80,7 @@ public class CalculadoraFXController implements Initializable {
         }
         
         switch (this.operador) {
+        
             case "+":
                 contador.sumarContador(valorActual);
                 break;
@@ -102,6 +105,7 @@ public class CalculadoraFXController implements Initializable {
             case "/":
                 try {
                     contador.dividirContador(valorActual);
+                    
                 } catch (ArithmeticException e) {
                     tfContador.setText("Error al dividir por 0");
                     e.printStackTrace();
