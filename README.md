@@ -8,7 +8,7 @@ Este proyecto implementa una calculadora básica con una interfaz gráfica intui
 
 ## Funcionalidades
 
-- Operaciones básicas de suma, resta, multiplicación y división.
+- Operaciones básicas de suma, resta, multiplicación, división y raíz cuadrada.
 - Funcionalidad para borrar el último carácter.
 - Funcionalidad para eliminar toda la información.
 - Interfaz gráfica con botones para ingresar números y realizar operaciones.
