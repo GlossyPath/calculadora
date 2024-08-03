@@ -28,7 +28,7 @@
       <Button fx:id="btnueve" layoutX="255.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="9" />
       <Button fx:id="btDivision" layoutX="365.0" layoutY="387.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="/" />
       <Button fx:id="btRaizCuadrada" layoutX="36.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="√" />
-      <Button layoutX="146.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
+      <Button layoutX="146.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="botonOperacion" stylesheets="@css/style.css" text="π" />
       <Button layoutX="255.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
       <Button layoutX="365.0" layoutY="296.0" mnemonicParsing="false" onAction="#clickBoton" prefHeight="80.0" prefWidth="100.0" styleClass="boton" stylesheets="@css/style.css" text="Button" />
       <TextField fx:id="tfAcumulado" alignment="BOTTOM_RIGHT" layoutX="35.0" layoutY="152.0" prefHeight="45.0" prefWidth="430.0" styleClass="txField" stylesheets="@css/style.css" />
