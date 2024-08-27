@@ -19,7 +19,7 @@ public class CalculadoraFXController implements Initializable {
     private TextField tfAcumulado;
     @FXML
     private Button btCero, btIgual, btClear, btResta, btUno, btDos, btTres, btSuma, btCuatro, btCinco, btSeis,
-            btMultiplicacion, btSiete, btOcho, btnueve, btDivision, btRaizCuadrada;
+            btMultiplicacion, btSiete, btOcho, btnueve, btDivision, btRaizCuadrada, btPi;
 
     private Contador contador;
     
@@ -41,9 +41,17 @@ public class CalculadoraFXController implements Initializable {
     	        reset = false;
     	    }
     	    
-    	    this.numero += btnTexto;
-    	    tfContador.setText(this.numero);
-    	    tfAcumulado.appendText(btnTexto);
+    	 if(btnTexto.equals("π") ) {
+    		 this.numero = "3.14159";
+    		 tfContador.setText(this.numero);
+        	 tfAcumulado.appendText(btnTexto);
+        	 
+    	 } else {
+    		 this.numero += btnTexto;
+        	 tfContador.setText(this.numero);
+        	 tfAcumulado.appendText(btnTexto);
+    	 }	 
+    	 
     	}
     
     public void guardarOperador(String btnTexto) {
@@ -68,10 +76,10 @@ public class CalculadoraFXController implements Initializable {
             return;
         }
         
-        int valorActual;
+        double valorActual;
         
         try {
-            valorActual = Integer.parseInt(this.numero);
+            valorActual = Double.parseDouble(this.numero);
             
         } catch (NumberFormatException e) {
             tfContador.setText("Error");
@@ -113,12 +121,12 @@ public class CalculadoraFXController implements Initializable {
                     return;
                 }
                 break;
-
+            
             default:
                 contador.setValor(valorActual);
         }
         
-        tfContador.setText(Integer.toString(contador.getValor()));
+        tfContador.setText(Double.toString(contador.getValor()));
         this.numero = "";
     }
     @FXML
@@ -142,6 +150,8 @@ public class CalculadoraFXController implements Initializable {
             contador.clear();
             this.operador = "";
             this.numero = "";
+        } else if (btnTexto.equals("π")) {
+            añadirDigitos(btnTexto);
         }
     }
     

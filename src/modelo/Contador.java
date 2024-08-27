@@ -2,66 +2,49 @@ package modelo;
 
 public class Contador {
 
-	private int valor;
-	
-	public Contador() {
-		
-		this.valor = 0;
-	}
+    private double valor;
 
-	
-	public int getValor() {
-		return valor;
-	}
+    public Contador() {
+        this.valor = 0;
+    }
 
-	
-	public void setValor(int valor) {
-		this.valor = valor;
-	}
+    public double getValor() {
+        return valor;
+    }
 
-	
-	public void sumarContador(int segundaCifra) {	
-		
-		int total = this.getValor() + segundaCifra;
-		this.setValor(total);		
-	}
-	
-	
-	public void restarContador(int segundaCifra) {
-		
-		int total = this.getValor() - segundaCifra;		
-		this.setValor(total);
-	}
-	
-	
-	public void multiplicarContador(int segundaCifra) {
-		int total = this.getValor() * segundaCifra;
-		this.setValor(total);
-	}
-	
-	
-	public void dividirContador(int segundaCifra) throws NumberFormatException {
-		if( segundaCifra == 0) {
-			throw new NumberFormatException ("No se puede dividir por 0");
-			
-		} else {
-			int total = this.getValor() / segundaCifra;
-			this.setValor(total);
-		}		
-	}
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
 
-	
-	public int resultadoContador() {
-		
-		int resultado = this.getValor();
-		
-		this.setValor(resultado);
-		
-		return resultado;
-	}
-	
-	
-	public void clear(){
-		this.setValor(0);
-	}
+    public void sumarContador(double segundaCifra) {
+        double total = this.getValor() + segundaCifra;
+        this.setValor(total);
+    }
+
+    public void restarContador(double segundaCifra) {
+        double total = this.getValor() - segundaCifra;
+        this.setValor(total);
+    }
+
+    public void multiplicarContador(double segundaCifra) {
+        double total = this.getValor() * segundaCifra;
+        this.setValor(total);
+    }
+
+    public void dividirContador(double segundaCifra) throws ArithmeticException {
+        if (segundaCifra == 0) {
+            throw new ArithmeticException("No se puede dividir por 0");
+        } else {
+            double total = this.getValor() / segundaCifra;
+            this.setValor(total);
+        }
+    }
+
+    public double resultadoContador() {
+        return this.getValor();
+    }
+
+    public void clear() {
+        this.setValor(0);
+    }
 }
