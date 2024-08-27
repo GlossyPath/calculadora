@@ -1,3 +1,27 @@
+/**
+ * Proyecto: CalculadoraFX
+ * 
+ * Descripción:
+ * CalculadoraFX es una aplicación de calculadora desarrollada en JavaFX y SceneBuilder.
+ * Este proyecto implementa una calculadora básica con una interfaz gráfica intuitiva utilizando JavaFX y Scene Builder.
+ * 
+  * Funcionalidades:
+ * - Operaciones básicas de suma, resta, multiplicación y división.
+ * - Cálculo de raíz cuadrada.
+ * - Cálculo del logaritmo en base 10.
+ * - Operación de elevar un número al cuadrado.
+ * - Funcionalidad para eliminar toda la información.
+ * - Interfaz gráfica con botones para ingresar números y realizar operaciones.
+ * 
+ * Autor: GlossyPath
+ * Fecha: 20/06/2024
+ * Versión: 1.0
+ * 
+ * Notas:
+ * - Este archivo contiene el controlador para la interfaz de usuario, gestionando la lógica de interacción
+ *   entre la interfaz y el modelo de la calculadora.
+ */
+
 package controlador;
 
 import javafx.fxml.FXML;
@@ -35,6 +59,7 @@ public class CalculadoraFXController implements Initializable {
         this.reset = false;
     }
     
+    
     public void añadirDigitos(String btnTexto) {
     	 if (reset) {
     	        tfContador.clear();
@@ -53,6 +78,7 @@ public class CalculadoraFXController implements Initializable {
     	 }	 
     	 
     	}
+    
     
     public void guardarOperador(String btnTexto) {
     	 if (!this.numero.isEmpty()) {
@@ -144,6 +170,8 @@ public class CalculadoraFXController implements Initializable {
         tfContador.setText(Double.toString(contador.getValor()));
         this.numero = "";
     }
+    
+    
     @FXML
     public void clickBoton(ActionEvent event) {
         Button btn = (Button) event.getSource();
@@ -170,6 +198,7 @@ public class CalculadoraFXController implements Initializable {
             añadirDigitos(btnTexto);
         }
     }
+    
     
     @FXML
     public void clickMenuCerrar(ActionEvent event) {
