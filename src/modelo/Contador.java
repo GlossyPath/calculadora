@@ -40,9 +40,20 @@ public class Contador {
         }
     }
     
-    public void log10 (double segundaCifra) {
+    public void raizCuadrada(double segundaCifra) throws ArithmeticException{
+    	if(segundaCifra < 0) {
+    		throw new ArithmeticException("No puede ser raiz cuadrada de un número negativo");
+    		
+    	} else {
+    		double resultado = Math.sqrt(segundaCifra);
+    		this.setValor(resultado);
+    	}
+    }
+    
+    public void log10 (double segundaCifra) throws ArithmeticException {
     	if (segundaCifra <= 0) {
             throw new ArithmeticException("No se puede calcular el logaritmo para valores ≤ 0");
+            
         } else {
             double resultado = Math.log10(segundaCifra);
             this.setValor(resultado);

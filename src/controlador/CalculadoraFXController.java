@@ -59,16 +59,17 @@ public class CalculadoraFXController implements Initializable {
              realizarOperacion();  
          }
          
+    	 /*
     	 if (btnTexto.equals("√") || btnTexto.equals("log")) {
     		 this.operador = btnTexto;
     	     tfAcumulado.appendText(this.operador);
     	     reset = true;
     	        
-    	 } else {
+    	 } else {*/
     		 this.operador = btnTexto;
     	     tfAcumulado.appendText(this.operador);
     	     reset = true;
-    	 }
+    	 //}
      }
     
     public void realizarOperacion() {
@@ -102,12 +103,15 @@ public class CalculadoraFXController implements Initializable {
                 break;
 
             case "√":
-                if (valorActual < 0) {
-                    tfContador.setText("Error: Raíz de número negativo");
+            	try {
+            		contador.raizCuadrada(valorActual);
+            		
+            	}catch(ArithmeticException e) {
+            		tfContador.setText("Error: raiz cuadrada negativa");
+                    e.printStackTrace();
                     this.numero = "";
                     return;
-                }
-                contador.setValor((int) Math.sqrt(valorActual));
+                }           
                 break;
 
             case "/":
