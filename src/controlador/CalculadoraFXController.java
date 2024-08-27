@@ -19,7 +19,7 @@ public class CalculadoraFXController implements Initializable {
     private TextField tfAcumulado;
     @FXML
     private Button btCero, btIgual, btClear, btResta, btUno, btDos, btTres, btSuma, btCuatro, btCinco, btSeis,
-            btMultiplicacion, btSiete, btOcho, btnueve, btDivision, btRaizCuadrada, btPi;
+            btMultiplicacion, btSiete, btOcho, btnueve, btDivision, btRaizCuadrada, btPi, btLog;
 
     private Contador contador;
     
