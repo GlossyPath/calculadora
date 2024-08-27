@@ -59,7 +59,7 @@ public class CalculadoraFXController implements Initializable {
              realizarOperacion();  
          }
          
-    	 if (btnTexto.equals("√")) {
+    	 if (btnTexto.equals("√") || btnTexto.equals("log")) {
     	        this.operador = btnTexto;
     	        tfAcumulado.appendText(this.operador);
     	        reset = true;
@@ -121,6 +121,17 @@ public class CalculadoraFXController implements Initializable {
                     return;
                 }
                 break;
+                
+            case "log":
+                try {
+                    contador.log10(valorActual);
+                    
+                } catch (ArithmeticException e) {
+                    tfContador.setText("Error: Logaritmo no definido para ≤ 0");
+                    this.numero = "";
+                    return;
+                }
+                break;
             
             default:
                 contador.setValor(valorActual);
@@ -137,7 +148,7 @@ public class CalculadoraFXController implements Initializable {
         if (btnTexto.matches("[0-9]")) {
             añadirDigitos(btnTexto);
             
-        } else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/") || btnTexto.equals("√")) {
+        } else if (btnTexto.equals("+") || btnTexto.equals("-") || btnTexto.equals("*") || btnTexto.equals("/") || btnTexto.equals("√") || btnTexto.equals("log")) {
             guardarOperador(btnTexto);
             
         } else if (btnTexto.equals("=")) {

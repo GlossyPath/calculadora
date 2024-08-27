@@ -39,6 +39,15 @@ public class Contador {
             this.setValor(total);
         }
     }
+    
+    public void log10 (double segundaCifra) {
+    	if (segundaCifra <= 0) {
+            throw new ArithmeticException("No se puede calcular el logaritmo para valores ≤ 0");
+        } else {
+            double resultado = Math.log10(segundaCifra);
+            this.setValor(resultado);
+        }
+    }
 
     public double resultadoContador() {
         return this.getValor();
