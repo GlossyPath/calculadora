@@ -4,11 +4,13 @@ CalculadoraFX es una aplicación de calculadora desarrollada en JavaFX y SceneBu
 
 ## Descripción
 
-Este proyecto implementa una calculadora básica con una interfaz gráfica intuitiva utilizando JavaFX y Scene Builder.
+Este proyecto implementa una calculadora con una interfaz gráfica intuitiva utilizando JavaFX y Scene Builder.
 
 ## Funcionalidades
 
-- Operaciones básicas de suma, resta, multiplicación, división y raíz cuadrada.
-- Funcionalidad para borrar el último carácter.
+- Operaciones básicas de suma, resta, multiplicación y división.
+- Cálculo de raíz cuadrada.
+- Cálculo del logaritmo en base 10.
+- Operación de elevar un número al cuadrado.
 - Funcionalidad para eliminar toda la información.
 - Interfaz gráfica con botones para ingresar números y realizar operaciones.
