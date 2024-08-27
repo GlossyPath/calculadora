@@ -60,15 +60,15 @@ public class CalculadoraFXController implements Initializable {
          }
          
     	 if (btnTexto.equals("√") || btnTexto.equals("log")) {
-    	        this.operador = btnTexto;
-    	        tfAcumulado.appendText(this.operador);
-    	        reset = true;
+    		 this.operador = btnTexto;
+    	     tfAcumulado.appendText(this.operador);
+    	     reset = true;
     	        
-    	    } else {
-    	        this.operador = btnTexto;
-    	        tfAcumulado.appendText(this.operador);
-    	        reset = true;
-    	    }
+    	 } else {
+    		 this.operador = btnTexto;
+    	     tfAcumulado.appendText(this.operador);
+    	     reset = true;
+    	 }
      }
     
     public void realizarOperacion() {
@@ -161,6 +161,7 @@ public class CalculadoraFXController implements Initializable {
             contador.clear();
             this.operador = "";
             this.numero = "";
+            
         } else if (btnTexto.equals("π")) {
             añadirDigitos(btnTexto);
         }
