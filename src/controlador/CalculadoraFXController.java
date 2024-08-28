@@ -82,20 +82,20 @@ public class CalculadoraFXController implements Initializable {
     
     public void guardarOperador(String btnTexto) {
     	 if (!this.numero.isEmpty()) {
-             realizarOperacion();  
+    		 if(btnTexto.equals("x²")) {
+    			 this.operador = btnTexto;
+    			 tfAcumulado.appendText(this.operador);
+    			 reset = true;
+    		 }
+             realizarOperacion();
          }
-         
-    	 /*
-    	 if (btnTexto.equals("√") || btnTexto.equals("log")) {
+       
+    	 if(!btnTexto.equals("x²")) {
     		 this.operador = btnTexto;
-    	     tfAcumulado.appendText(this.operador);
-    	     reset = true;
-    	        
-    	 } else {*/
-    		 this.operador = btnTexto;
-    	     tfAcumulado.appendText(this.operador);
-    	     reset = true;
-    	 //}
+        	 tfAcumulado.appendText(this.operador);
+        	 reset = true; 
+    	 }
+    	   	 
      }
     
     public void realizarOperacion() {
@@ -162,6 +162,10 @@ public class CalculadoraFXController implements Initializable {
                     return;
                 }
                 break;
+               
+            case "x²":
+            	contador.elevarAlCuadrado(valorActual);
+            	break;
             
             default:
                 contador.setValor(valorActual);

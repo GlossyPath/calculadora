@@ -59,6 +59,11 @@ public class Contador {
             this.setValor(resultado);
         }
     }
+    
+    public void elevarAlCuadrado (double segundaCifra) {
+    	double total = segundaCifra * segundaCifra;
+    	this.setValor(total);
+    }
 
     public double resultadoContador() {
         return this.getValor();
